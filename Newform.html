@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+    />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/dist/css/bootstrap-icons.min.css"
+    />
+
+    <link rel="stylesheet" href="form.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container mt-5">
+      <div class="row d-flex justify-content-center align-items-center">
+        <div class="col-md-6">
+          <form id="regForm">
+            <!-- <h1 class="form-title container" id="step-title">Step 1: Select Amount</h1> -->
+            <div class="all-steps" id="all-steps">
+              <span class="step"></span> <span class="step"></span>
+              <span class="step"></span> <span class="step"></span>
+            </div>
+            <h1 class="form-title container" id="step-title">Step 1: Select Amount</h1>
+           
+            
+            <div class="tab">
+              <!-- <label class="container">Select Amount </label> -->
+              <p>
+                <select id="requestAmont" class="requestAmont" required>
+                  <option value="select">select</option>
+                </select>
+              </p>
+            </div>
+            <div class="tab">
+              <div class="row">
+                <p class="col-md-6">
+                    <input type="text"
+                        placeholder="First Name" id="FirstName"
+                        oninput="this.className = ''"
+                        name="FirstName" maxlength="50" minlength="2"
+                    />
+                </p>
+                <p class="col-md-6">
+                    <input 
+                        placeholder="Last Name"
+                        oninput="this.className = ''"
+                        name="LastName"  
+                    />
+                </p>
+            </div>
+            
+              <p>
+                <input type="email"
+                  placeholder="Email"
+                  oninput="this.className = ''"
+                  name="email"
+                />
+              </p> 
+              <div class="form-group row">
+                <div class="col-md-6">
+                  <input name="phone_home" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" id="phone_home" class="form-control" type="number" placeholder="Home Phone:*" 
+                    onfocus="this.placeholder=''" onblur="this.placeholder='Home Phone:0123456789*'" 
+                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                    oninput="javascript: if (this.value.length > this.minLength) this.value = this.value.slice(0, this.minLength);"
+                    maxlength="10" minlength="10" data-field="phone_home" class="form-control" data-rule-required="true" required="required">
+                </div>
+                <div class="col-md-6">
+                  <input name="phone_cell" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" id="phone_cell" class="form-control" type="number" placeholder="Cell Phone:*" 
+                    onfocus="this.placeholder=''" onblur="this.placeholder='Cell Phone:*'" 
+                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                    oninput="javascript: if (this.value.length > this.minLength) this.value = this.value.slice(0, this.minLength);"
+                    maxlength="10" minlength="10" data-field="phone_home" class="form-control" data-rule-required="true" required="required">
+                </div>
+              </div>
+              
+                <p> <input name="PhoneWork" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" id="phone_cell" class="form-control" type="number" placeholder="work phone*'" 
+                  onfocus="this.placeholder=''" onblur="this.placeholder='Phone Work:*'" 
+                  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                  oninput="javascript: if (this.value.length > this.minLength) this.value = this.value.slice(0, this.minLength);"
+                  maxlength="10" minlength="10" data-field="PhoneWork" class="form-control" data-rule-required="true" required="required"></p>
+                  <div class="form-group row">
+                    <div class="col-md-7">
+                      <input type="text"
+                             placeholder="Street Address"
+                             oninput="this.className = ''"
+                             name="address"
+                             id="StreetAddress1"
+                             class="form-control"
+                      />
+                    </div>
+                    <div class="col-md-5">
+                      <input type="text"
+                             placeholder="City"
+                             oninput="this.className = ''"
+                             name="city"
+                             class="form-control"
+                      />
+                    </div>
+                  </div>
+                  
+              <div class="row">
+                <div class="col-md-6">
+                  <select name="state" id="State" class="form-control" required>
+                    <option value="" disabled selected>Select a state</option>
+                      State:
+                    </option>
+                    <option value="AL">Alabama</option>
+                    <option value="AK">Alaska</option>
+                    <option value="AZ">Arizona</option>
+                    <option value="AR">Arkansas</option>
+                    <option value="CA">California</option>
+                    <option value="CO">Colorado</option>
+                    <option value="CT">Connecticut</option>
+                    <option value="DE">Delaware</option>
+                    <option value="DC">District Of Columbia</option>
+                    <option value="FL">Florida</option>
+                    <option value="GA">Georgia</option>
+                    <option value="HI">Hawaii</option>
+                    <option value="ID">Idaho</option>
+                    <option value="IL">Illinois</option>
+                    <option value="IN">Indiana</option>
+                    <option value="IA">Iowa</option>
+                    <option value="KS">Kansas</option>
+                    <option value="KY">Kentucky</option>
+                    <option value="LA">Louisiana</option>
+                    <option value="ME">Maine</option>
+                    <option value="MD">Maryland</option>
+                    <option value="MA">Massachusetts</option>
+                    <option value="MI">Michigan</option>
+                    <option value="MN">Minnesota</option>
+                    <option value="MS">Mississippi</option>
+                    <option value="MO">Missouri</option>
+                    <option value="MT">Montana</option>
+                    <option value="NE">Nebraska</option>
+                    <option value="NV">Nevada</option>
+                    <option value="NM">New Mexico</option>
+                    <option value="NH">New Hampshire</option>
+                    <option value="NJ">New Jersey</option>
+              
+                    <option value="NC">North Carolina</option>
+                    <option value="ND">North Dakota</option>
+                    <option value="OH">Ohio</option>
+                    <option value="OK">Oklahoma</option>
+                    <option value="OR">Oregon</option>
+                    <option value="PA">Pennsylvania</option>
+                    <option value="RI">Rhode Island</option>
+                    <option value="SC">South Carolina</option>
+                    <option value="SD">South Dakota</option>
+                    <option value="TN">Tennessee</option>
+                    <option value="TX">Texas</option>
+                    <option value="UT">Utah</option>
+                    <option value="VT">Vermont</option>
+                    <option value="VA">Virginia</option>
+                    <option value="WA">Washington</option>
+                    <option value="WV">West Virginia</option>
+                    <option value="WI">Wisconsin</option>
+                    <option value="WY">Wyoming</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <p><input name="zip_code"
+                      onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57"
+                      id="zip_code" class="form-control" type="number" placeholder="Zip Code:*" onfocus="this.placeholder=''"
+                      onblur="this.placeholder='Zip Code:*'"
+                      oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                      oninput="javascript: if (this.value.length > this.minLength) this.value = this.value.slice(0, this.minLength);"
+                      maxlength="5" minlength="5" data-field="zip_code" class="form-control" data-rule-required="true"
+                      required="required"></p>
+                </div>
+              
+              </div>
+              <!-- <p><input name="zip_code" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" id="zip_code" class="form-control" type="number" placeholder="Zip Code:*" 
+                onfocus="this.placeholder=''" onblur="this.placeholder='Zip Code:*'" 
+                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                oninput="javascript: if (this.value.length > this.minLength) this.value = this.value.slice(0, this.minLength);"
+                maxlength="5" minlength="5" data-field="zip_code" class="form-control" data-rule-required="true" required="required"></p> -->
+               <p>
+                <input type="text"
+                  placeholder="Country"
+                  oninput="this.className = ''"
+                  name="country"
+                />
+              </p>
+              <!-- <p>
+                <div class="row">
+                  <input id="dob" hidden name="dob">
+                  <select name="month" class="form-control col-sm" onchange="getDate()" id="dobmonth" data-msg-required="Add month"
+                    data-rule-required="true" required="required">
+                    <option value="" disabled selected>Month</option>
+                    <option value="01">January</option>
+                    <option value="02">February</option>
+                    <option value="03">March</option>
+                    <option value="04">April</option>
+                    <option value="05">May</option>
+                    <option value="06">June</option>
+                    <option value="07">July</option>
+                    <option value="08">August</option>
+                    <option value="09">September</option>
+                    <option value="10">October</option>
+                    <option value="11">November</option>
+                    <option value="12">December</option>
+                  </select>
+                  <select name="day" onchange="getDate()" class="form-control col-sm" id="day" data-msg-required="day"
+                    data-rule-required="true" required="required">
+                
+                  </select>
+                  <script>
+                    function getDate() {
+                      var day = document.getElementById("day").value;
+                      var month = document.getElementById("dobmonth").value;
+                      var year = document.getElementById("year").value;
+                      var date = year + "-" + month + "-" + day;
+                      console.log(date);
+                      document.getElementById("dob").value = date;
+                      // console.log(document.getElementById("newDate").value);
+                      console.log(document.getElementById("dob").value);
+                    }
+                  </script>
+                
+                
+                  <script>
+                    document.addEventListener("DOMContentLoaded", function (event) {
+                      var selectBox = document.getElementById('day');
+                      for (var i = 1; i <= 31; i++) {
+                        if (i < 10) {
+                          i = '0' + i;
+                        }
+                        var option = document.createElement('option');
+                        option.value = i;
+                        option.innerHTML = i;
+                        selectBox.appendChild(option);
+                      }
+                    });
+                  </script>
+                
+                  <select name="year" class="form-control col-sm" id="year" data-msg-required="year" data-rule-required="true"
+                    onchange="getDate()" required="required">
+                  </select>
+                    <script>
+                      document.addEventListener("DOMContentLoaded", function (event) {
+                        var selectBox = document.getElementById('year');
+                        for (var i = 2003; i >= 1938; i--) {
+                          var option = document.createElement('option');
+                          option.value = i;
+                          option.innerHTML = i;
+                          selectBox.appendChild(option);
+                        }
+                      });
+                    </script>
+                
+                  
+                </div>
+              </p> -->
+              <div class="row">
+
+                <label for="dob">Your Date Of Birth
+                </label>
+                <input id="dob" hidden name="dob">
+                
+                <div class="col-md-4">
+                    <select name="day" class="form-control" onchange="getDate()" id="day"
+                        data-msg-required="Add Day" data-rule-required="true" required="required">
+                        <option value="" disabled selected>Day</option>
+                    </select>
+                </div>
+                    <script>
+                    document.addEventListener("DOMContentLoaded", function(event) {
+                        var selectBox = document.getElementById('day');
+                        for (var i = 1; i <= 31; i++) {
+                            if(i<10){
+                                i='0'+i;
+                            }
+                   var option = document.createElement('option');
+                      option.value = i;
+                    option.innerHTML = i;
+                    selectBox.appendChild(option);
+                    }
+                    });
+                    </script>
+                <div class="col-md-4">
+                    <select name="month" class="form-control" onchange="getDate()" id="dobmonth"
+                        data-msg-required="Add month" data-rule-required="true" required="required">
+                        <option value="" disabled selected>Month</option>
+                        <option value="01">January</option>
+                        <option value="02">February</option>
+                        <option value="03">March</option>
+                        <option value="04">April</option>
+                        <option value="05">May</option>
+                        <option value="06">June</option>
+                        <option value="07">July</option>
+                        <option value="08">August</option>
+                        <option value="09">September</option>
+                        <option value="10">October</option>
+                        <option value="11">November</option>
+                        <option value="12">December</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <select name="year" class="form-control" onchange="getDate()" id="year"
+                        data-msg-required="Add year" data-rule-required="true" required="required">
+                        <option value="" disabled selected>Year</option>
+                    </select>
+                </div>
+                <script>
+                document.addEventListener("DOMContentLoaded", function(event) {
+                    var selectBox = document.getElementById('year');
+                    for (var i = 2003; i >= 1938; i--) {
+               var option = document.createElement('option');
+                  option.value = i;
+                option.innerHTML = i;
+                selectBox.appendChild(option);
+                }
+                });
+                </script>
+                <script>
+                  function getDate(){
+                      var day = document.getElementById("day").value;
+                      var month = document.getElementById("dobmonth").value;
+                      var year = document.getElementById("year").value;
+                      var date = year+"-"+month+"-"+day;
+                      console.log(date);
+                      document.getElementById("dob").value = date;
+                      // console.log(document.getElementById("newDate").value);
+                      console.log(document.getElementById("dob").value);
+                  }
+                </script>
+            </div>
+            </div>
+            
+            <div class="tab">
+              <p>
+                <select name="month_at_address" id="month" class="form-control" required>
+                  <option value="">Months at Residence:</option>
+                  <option value="3">3 Months</option>
+                  <option value="6">6 Months</option>
+                  <option value="9">9 Months</option>
+                  <option value="12">12 Months</option>
+                  <option value="18">18 Months</option>
+                  <option value="24">24 Months</option>
+                  <option value="36">36 Months</option>
+                  <option value="48">100 Months</option>
+                  <option value="60">200 Months</option>
+                  <option value="48">300 Months</option>
+                  <option value="60">400 Months</option>
+                  <option value="48">500 Months</option>
+                  <option value="60">600 Months</option>
+                  <option value="48">700 Months</option>
+                  <option value="60">800 Months</option>
+                  <option value="48">900 Months</option>
+                  <option value="60">1000 Months</option>
+                  
+              </select>
+              </p>
+              <p>
+                <input name="job_title" id="job_title" class="form-control" type="text" placeholder="Job Title:*"
+                onfocus="this.placeholder=''" onblur="this.placeholder='Job Title:*'">
+              </p>
+              <P>
+                <input name="employer" id="employer" class="form-control" type="text" placeholder="Employer Name:*"
+                            onfocus="this.placeholder=''" onblur="this.placeholder='Employer Name:*'">
+              </P>
+              <p>
+                <input name="bank_name" id="bank_name" class="form-control" type="text" placeholder="Bank Name:*"
+                            onfocus="this.placeholder=''" onblur="this.placeholder='Bank Name:*'">
+              </p>
+              <P>
+                <select name="account_type" id="account_type" class="form-control" required>
+                  <option value="">Bank Account Type:</option>
+                  <option value="Checking">Checking</option>
+                  <option value="Saving">Saving</option>
+                </select>
+              </P>
+              <p>
+                <select name="MonthlyIncome" id="MonthlyIncome" class="form-control" required>
+                  <option value="">Monthly Income:</option>
+                  <option value="750">750</option>
+                  <option value="1000">$1,000</option>
+                  <option value="1500">$1,500</option>
+                  <option value="2000">$2,000</option>
+                  <option value="2500">$2,500</option>
+                  <option value="3000">$3,000</option>
+                  <option value="3500">$3,500</option>
+                  <option value="4000">$4,000</option>
+                  <option value="4500">$4,500</option>
+                  <option value="5000">$5,000</option>  
+              </select>
+              <script>
+                document.addEventListener("DOMContentLoaded", function (event) {
+                  var selectBox = document.getElementById('MonthlyIncome');
+                  for (var i = 1000; i <= 15000; i+=500) {
+                    var option = document.createElement('option');
+                    option.value = i;
+                    option.innerHTML = i;
+                    selectBox.appendChild(option);
+                  }
+                });
+              </script>
+              <p>
+                <select name="income_type" id="Income_Type" class="form-control" required>
+                  <option value="">Income Type:</option>
+                  <option value=" Self-employed">Self-employed</option>
+                  <option value="Benefits">Benefits</option>
+                  <option value="Employment">Employment</option>
+              </select>
+              </p>
+              </p>
+              <p>
+                <select name="pay_frequency" id="pay_frequency_ee8" class="form-control" required>
+                  <option value="">Pay Frequency:</option>
+                  <option value="Weekly">Weekly</option>
+                  <option value="Biweekly">Biweekly</option>
+                  <option value="Semimonthly">Twicemonthly</option>
+                  <option value="Monthly">Monthly</option>
+              </select>
+              </p>
+              <p>
+                <input name="BankABA" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" id="BankABA" class="form-control" type="number" placeholder="BankABA:*" 
+                        onfocus="this.placeholder=''" onblur="this.placeholder='SSN:*'" 
+                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                        oninput="javascript: if (this.value.length > this.minLength) this.value = this.value.slice(0, this.minLength);"
+                        maxlength="9" minlength="9" data-field="BankABA" class="form-control" data-rule-required="true" required="required">
+              </p>
+              <p>
+                <select name="direct_deposit" id="direct_deposit" class="form-control" required>
+                  <option value="">Direct Deposit:</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+              </select>
+              </p>
+              <P>
+                <input name="account_number" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" id="account_number" class="form-control" type="number" placeholder="Account Number:*">
+              </P>
+              <label style="font-size: 14px;">Next Pay Date:</label>
+              <input type="date" onfocus="nextpaycheck1()"  id="nextpaydate" min="" name="next_pay_date" data-field="next_pay_date" class="form-control" required>
+
+
+            </div>
+            <div class="tab">
+              
+              <p>
+                <input name="ssn" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" id="ssn" class="form-control" type="number" placeholder="SSN:*" 
+                        onfocus="this.placeholder=''" onblur="this.placeholder='SSN:*'" 
+                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                        oninput="javascript: if (this.value.length > this.minLength) this.value = this.value.slice(0, this.minLength);"
+                        maxlength="9" minlength="9" data-field="ssn" class="form-control" data-rule-required="true" required="required">
+              </p>
+              <p>
+                <input name="drivers_license_number" id="drivers_license_number" class="form-control" type="text" placeholder="Driving License Number">
+              </p>
+              <p>
+                <select name="drivers_license_state" id="drivers_license_state" class="form-control" required>
+                  <option value="">Driver`s License State:</option>
+                  <option value="AL">Alabama</option>
+                  <option value="AK">Alaska</option>
+                  <option value="AZ">Arizona</option>
+                  <option value="AR">Arkansas</option>
+                  <option value="CA">California</option>
+                  <option value="CO">Colorado</option>
+                  <option value="CT">Connecticut</option>
+                  <option value="DE">Delaware</option>
+                  <option value="DC">District Of Columbia</option>
+                  <option value="FL">Florida</option>
+                  <option value="GA">Georgia</option>
+                  <option value="HI">Hawaii</option>
+                  <option value="ID">Idaho</option>
+                  <option value="IL">Illinois</option>
+                  <option value="IN">Indiana</option>
+                  <option value="IA">Iowa</option>
+                  <option value="KS">Kansas</option>
+                  <option value="KY">Kentucky</option>
+                  <option value="LA">Louisiana</option>
+                  <option value="ME">Maine</option>
+                  <option value="MD">Maryland</option>
+                  <option value="MA">Massachusetts</option>
+                  <option value="MI">Michigan</option>
+                  <option value="MN">Minnesota</option>
+                  <option value="MS">Mississippi</option>
+                  <option value="MO">Missouri</option>
+                  <option value="MT">Montana</option>
+                  <option value="NE">Nebraska</option>
+                  <option value="NV">Nevada</option>
+                  <option value="NM">New Mexico</option>
+                  <option value="NH">New Hampshire</option>
+                  <option value="NJ">New Jersey</option>
+                  <option value="NM">New Mexico</option>
+                  <option value="NY">New York</option>
+                  <option value="NC">North Carolina</option>
+                  <option value="ND">North Dakota</option>
+                  <option value="OH">Ohio</option>
+                  <option value="OK">Oklahoma</option>
+                  <option value="OR">Oregon</option>
+                  <option value="PA">Pennsylvania</option>
+                  <option value="RI">Rhode Island</option>
+                  <option value="SC">South Carolina</option>
+                  <option value="SD">South Dakota</option>
+                  <option value="TN">Tennessee</option>
+                  <option value="TX">Texas</option>
+                  <option value="UT">Utah</option>
+                  <option value="VT">Vermont</option>
+                  <option value="VA">Virginia</option>
+                  <option value="WA">Washington</option>
+                  <option value="WV">West Virginia</option>
+                  <option value="WI">Wisconsin</option>
+                  <option value="WY">Wyoming</option>
+            </select>
+              </p>
+              <p>
+                <select name="best_time_to_call" id="Best_Time_to_Contact" class="form-control requestAmont" required>
+                  <option value="">Best Time to Contact:</option>
+                  <option value="Anytime">Anytime</option>
+                  <option value="Morning">Morning</option>
+                  <option value="Afternoon">Afternoon</option>
+                  <option value="Evening">Evening</option>
+                </select>
+              </p>
+              <p><select name="military" id="is-military" class="form-control" required>
+                  <option value="">Active Military (or dependent)?</option>
+                  <option value="true">Yes</option>
+                  <option value="false">No</option>
+                </select></p>
+              <p>
+                <p> <select name="own_home" id="own_home" class="form-control" required>
+                    <option value="">Home Ownership:</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                  </select></p>
+                <!-- Exp Month
+                <select id="month">
+                  <option value="1">January</option>
+                  <option value="2">February</option>
+                  <option value="3">March</option>
+                  <option value="4">April</option>
+                  <option value="5">May</option>
+                  <option value="6">June</option>
+                  <option value="7">July</option>
+                  <option value="8">August</option>
+                  <option value="9">September</option>
+                  <option value="10">October</option>
+                  <option value="11">November</option>
+                  <option value="12">December</option>
+                </select>
+              </p>
+              <p>
+                Exp Year
+                <select id="year">
+                  <option value="2021">2021</option>
+                  <option value="2022">2022</option>
+                  <option value="2023">2023</option>
+                  <option value="2024">2024</option>
+                </select>
+              </p>
+
+              <p>
+                <input
+                  placeholder="CVV"
+                  oninput="this.className = ''"
+                  name="phone"
+                />
+              </p> -->
+            </div>
+
+            <div class="thanks-message text-center" id="text-message">
+              <img
+                src="https://i.imgur.com/O18mJ1K.png"
+                width="100"
+                class="mb-4"
+              />
+              <h3>Thank YOU!</h3>
+              <span
+                >.....................................</span
+              >
+            </div>
+            <script>
+              function workphone(){
+                home = document.getElementById("phone_home").value;
+                work = document.getElementById("phone_work").value;
+                if(home == work){
+                    document.getElementById("phone_work").value =  null;
+                    alert("Work Phone and Phone Home Cannot be Equal.");
+                  }
+              }
+          </script>
+            <div style="overflow: auto" id="nextprevious">
+              <div style="float: right">
+                <button type="button" id="prevBtn" onclick="nextPrev(-1)">
+                  Previous
+                </button>
+                <button type="button" id="nextBtn" onclick="nextPrev(1)">
+                  Next
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+<script>
+    var currentStep = 0;
+    var stepTitles = [
+      "Step 1: Select Amount",
+      "Step 2: Personal Information",
+      "Step 3: Employment Information",
+      "Step 4: Additional Details"
+    ];
+
+    function updateStepTitle() {
+      var titleElement = document.getElementById("step-title");
+      if (currentStep >= 0 && currentStep < stepTitles.length) {
+        titleElement.textContent = stepTitles[currentStep];
+      }
+    }
+  //your javascript goes here
+  var currentTab = 0,requestAmont=0, tab=0;
+  var select = document.getElementById("requestAmont");
+  var fname;
+
+    for (var i = 100; i <= 50000; i += 50) {
+      var option = document.createElement("option");
+      option.value = i;
+      option.text = i;
+      select.appendChild(option);
+    }
+    
+ 
+  document.addEventListener("DOMContentLoaded", function (event) {
+    showTab(currentTab);
+
+  });
+  
+
+  function showTab(n) {
+
+    var x = document.getElementsByClassName("tab");
+    x[n].style.display = "block";
+    if (n == 0) {
+      document.getElementById("prevBtn").style.display = "none";
+    } else {
+      document.getElementById("prevBtn").style.display = "inline";
+    }
+    if (n == x.length - 1) {
+      document.getElementById("nextBtn").innerHTML = "Submit";
+    } else {
+      document.getElementById("nextBtn").innerHTML = "Next";
+    }
+    fixStepIndicator(n);
+  }
+
+  function nextPrev(n) {
+    
+    var x = document.getElementsByClassName("tab");
+    if (n == 1 && !validateForm()) return false;
+    x[currentTab].style.display = "none";
+    currentTab = currentTab + n;
+    if (currentTab >= x.length) {
+      // document.getElementById("regForm").submit();
+      // return false;
+      //alert("sdf");
+      document.getElementById("nextprevious").style.display = "none";
+      document.getElementById("all-steps").style.display = "none";
+      document.getElementById("register").style.display = "none";
+      document.getElementById("text-message").style.display = "block";
+    }
+    currentStep += n;
+      updateStepTitle();
+    showTab(currentTab);
+  }
+  
+
+  function validateForm() {
+    var fname, x, inputs, selects, i, valid = true;
+    fname = document.getElementById("FirstName").value;
+    x = document.getElementsByClassName("tab");
+    inputs = x[currentTab].getElementsByTagName("input");
+    selects = x[currentTab].getElementsByTagName("select");
+
+    // Validate input elements
+    for (i = 0; i < inputs.length; i++) {
+        if (inputs[i].value === "") {
+            inputs[i].classList.add("invalid");
+            valid = false;
+        } else {
+            inputs[i].classList.remove("invalid");
+        }
+    }
+
+    // Validate select elements
+    for (i = 0; i < selects.length; i++) {
+        if (selects[i].value === "") {
+            selects[i].classList.add("invalid");
+            valid = false;
+        } else {
+            selects[i].classList.remove("invalid");
+        }
+    }
+
+    if (currentTab == 0 && selects[0].value === "select") {
+        selects[0].classList.add("invalid");
+        valid = false;
+    }
+  //  else{
+  //      valid=false;
+  //      }
+    
+    // }
+     
+   
+      
+      if(currentTab==1 &&  fname.length < 2 ){
+        fname.className +=" invalid";
+        alert("less then 2 " +fname.length); 
+          
+      } 
+      
+     
+
+
+    if (valid) {
+      document.getElementsByClassName("step")[currentTab].className +=
+        " finish";
+    }
+    return valid;
+  }
+
+  function fixStepIndicator(n) {
+    var i,
+      x = document.getElementsByClassName("step");
+    for (i = 0; i < x.length; i++) {
+      x[i].className = x[i].className.replace(" active", "");
+    }
+    x[n].className += " active";
+  }
+  // function nextpaycheck(){
+  //   let today = new Date();
+  //             let day = today.getDate();
+  //             let month = today.getMonth() + 1;
+  //             let year = today.getFullYear();
+  //             if (day < 10) {
+  //                 day = "0" + day.toString();
+  //             }
+  //             if (month < 10) {
+  //                 month = "0" + month.toString();
+  //             }
+  //             let NextPayDateMin = year + "-" + month + "-" + day;
+  //             nextpay = document.getElementById("nextpaydate").value;
+  //             // console.log(nextpay);
+  //             let d = new Date(nextpay);
+  //             // console.log(d);
+  //             if(nextpay < NextPayDateMin){
+  //                 document.getElementById("nextpaydate").value = null;
+  //                 alert("Next Paydate Must be in the future");
+  //             }
+  //             else if(d.getDay() == 6 || d.getDay() == 0){
+  //                     document.getElementById("nextpaydate").value = null;
+  //                     alert("Next PayDate cannot be on the Weekend");
+  //             }
+  // }
+  
+    function nextpaycheck1() {
+      // Step 1: Get the current date
+      const today = new Date();
+    
+      // Step 2: Get the input element for the next pay date
+      const nextPayDateInput = document.getElementById('nextpaydate');
+    
+      // Step 3: Set the min attribute of the input element to the current date
+      nextPayDateInput.setAttribute('min', today.toISOString().slice(0,10));
+    }
+    updateStepTitle();
+</script>
