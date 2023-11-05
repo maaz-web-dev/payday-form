@@ -1,16 +1,33 @@
-your CSS goes here
+
 body {
     background: #eee
 }
 
-#regForm {
+#form-container {
+    background-image: url("./bkpic.jpg");
+    background-size: cover; /* Scale the background image to cover the entire container */
+    background-position: center center; /* Center the background image */
+    background-repeat: no-repeat; /* Prevent the background from repeating */
+    background-attachment: fixed; /* Keep the background fixed while scrolling */
+    padding: 40px;
+    border-radius: 10px;
+    position: relative; /* Create a stacking context for child elements */
+  }
+/* #regForm {
     background-color: #ffffff;
     margin: 0px auto;
     font-family: Raleway;
     padding: 40px;
     border-radius: 10px
-}
-
+} */
+ #regForm {
+    background-color: rgba(255, 255, 255, 0.8); /* Adjust the background color to make it semi-transparent */
+    margin: 0 auto;
+    font-family: Raleway;
+    padding: 40px;
+    /* border-radius: 10px */
+    border-radius: 10px;
+  } 
 h1 {
     text-align: center
 }
@@ -103,8 +120,11 @@ select:focus {
     margin-bottom: 30px
 }
 
-.thanks-message {
+/* .thanks-message {
     display: none
+} */
+#text-message{
+    display: none;
 }
 
 .container {
@@ -235,3 +255,29 @@ body {
   button:hover {
     background-color: #45a049;
   }
+
+  #text-message {
+    display: none;
+    text-align: center;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+#text-message img {
+    display: block;
+    margin: 0 auto;
+}
+
+#text-message h3 {
+    font-size: 24px;
+    color: #333;
+    margin: 10px 0;
+}
+
+#text-message span {
+    display: block;
+    height: 2px;
+    background-color: #ccc;
+    margin: 20px 0;
+}

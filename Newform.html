@@ -18,13 +18,15 @@
     />
 
     <link rel="stylesheet" href="form.css" />
-    <title>Document</title>
+    <title>payday</title>
   </head>
   <body>
-    <div class="container mt-5">
+   <!-- <img src="./bkpic.jpg" alt="jhgfghjkl;lkjh" width="100%" height="100%"> -->
+    <div class="container mt-5" id="form-container">
       <div class="row d-flex justify-content-center align-items-center">
         <div class="col-md-6">
           <form id="regForm">
+            <!-- <img src="./bkpic.jpg" alt="Background Image" id="background-image"> -->
             <!-- <h1 class="form-title container" id="step-title">Step 1: Select Amount</h1> -->
             <div class="all-steps" id="all-steps">
               <span class="step"></span> <span class="step"></span>
@@ -361,26 +363,42 @@
                   
               </select>
               </p>
+              <div class="form-group row">
+                <div class="col-md-6">
+                  <input name="job_title" id="job_title" class="form-control" type="text" placeholder="Job Title:*"
+                    onfocus="this.placeholder=''" onblur="this.placeholder='Job Title:*'">
+                </div>
+                <div class="col-md-6">
+                  <input name="employer" id="employer" class="form-control" type="text" placeholder="Employer Name:*"
+                    onfocus="this.placeholder=''" onblur="this.placeholder='Employer Name:*'">
+                </div>
+              </div>
               <p>
-                <input name="job_title" id="job_title" class="form-control" type="text" placeholder="Job Title:*"
-                onfocus="this.placeholder=''" onblur="this.placeholder='Job Title:*'">
+                <input name="BankABA" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" id="BankABA" class="form-control" type="number" placeholder="BankABA:*" 
+                        onfocus="this.placeholder=''" onblur="this.placeholder='SSN:*'" 
+                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                        oninput="javascript: if (this.value.length > this.minLength) this.value = this.value.slice(0, this.minLength);"
+                        maxlength="9" minlength="9" data-field="BankABA" class="form-control" data-rule-required="true" required="required">
               </p>
+             
+              <div class="form-group row">
+                <div class="col-md-7">
+                  <input name="bank_name" id="bank_name" class="form-control" type="text" placeholder="Bank Name:*"
+                    onfocus="this.placeholder=''" onblur="this.placeholder='Bank Name:*'">
+                </div>
+                <div class="col-md-5">
+                  <select name="account_type" id="account_type" class="form-control" required>
+                    <option value="">Bank Account Type:</option>
+                    <option value="Checking">Checking</option>
+                    <option value="Saving">Saving</option>
+                  </select>
+                </div>
+              </div>
               <P>
-                <input name="employer" id="employer" class="form-control" type="text" placeholder="Employer Name:*"
-                            onfocus="this.placeholder=''" onblur="this.placeholder='Employer Name:*'">
+                <input name="account_number" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" id="account_number" class="form-control" type="number" placeholder="Account Number:*">
               </P>
-              <p>
-                <input name="bank_name" id="bank_name" class="form-control" type="text" placeholder="Bank Name:*"
-                            onfocus="this.placeholder=''" onblur="this.placeholder='Bank Name:*'">
-              </p>
-              <P>
-                <select name="account_type" id="account_type" class="form-control" required>
-                  <option value="">Bank Account Type:</option>
-                  <option value="Checking">Checking</option>
-                  <option value="Saving">Saving</option>
-                </select>
-              </P>
-              <p>
+              <div class="form-group row">
+                <div class="col-md-6">
                 <select name="MonthlyIncome" id="MonthlyIncome" class="form-control" required>
                   <option value="">Monthly Income:</option>
                   <option value="750">750</option>
@@ -405,15 +423,16 @@
                   }
                 });
               </script>
-              <p>
+              </div>
+              <div class="col-md-6">
                 <select name="income_type" id="Income_Type" class="form-control" required>
                   <option value="">Income Type:</option>
                   <option value=" Self-employed">Self-employed</option>
                   <option value="Benefits">Benefits</option>
                   <option value="Employment">Employment</option>
               </select>
-              </p>
-              </p>
+              </div>
+              </div>
               <p>
                 <select name="pay_frequency" id="pay_frequency_ee8" class="form-control" required>
                   <option value="">Pay Frequency:</option>
@@ -423,13 +442,7 @@
                   <option value="Monthly">Monthly</option>
               </select>
               </p>
-              <p>
-                <input name="BankABA" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" id="BankABA" class="form-control" type="number" placeholder="BankABA:*" 
-                        onfocus="this.placeholder=''" onblur="this.placeholder='SSN:*'" 
-                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                        oninput="javascript: if (this.value.length > this.minLength) this.value = this.value.slice(0, this.minLength);"
-                        maxlength="9" minlength="9" data-field="BankABA" class="form-control" data-rule-required="true" required="required">
-              </p>
+             
               <p>
                 <select name="direct_deposit" id="direct_deposit" class="form-control" required>
                   <option value="">Direct Deposit:</option>
@@ -437,9 +450,7 @@
                   <option value="No">No</option>
               </select>
               </p>
-              <P>
-                <input name="account_number" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" id="account_number" class="form-control" type="number" placeholder="Account Number:*">
-              </P>
+              
               <label style="font-size: 14px;">Next Pay Date:</label>
               <input type="date" onfocus="nextpaycheck1()"  id="nextpaydate" min="" name="next_pay_date" data-field="next_pay_date" class="form-control" required>
 
@@ -523,17 +534,23 @@
                   <option value="Evening">Evening</option>
                 </select>
               </p>
-              <p><select name="military" id="is-military" class="form-control" required>
-                  <option value="">Active Military (or dependent)?</option>
-                  <option value="true">Yes</option>
-                  <option value="false">No</option>
-                </select></p>
-              <p>
-                <p> <select name="own_home" id="own_home" class="form-control" required>
+              <div class="form-group row">
+                <div class="col-md-6">
+                  <select name="military" id="is-military" class="form-control" required>
+                    <option value="">Active Military (or dependent)?</option>
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                  </select>
+                </div>
+                <!-- <p> -->
+                <div class="col-md-6">
+                  <select name="own_home" id="own_home" class="form-control" required>
                     <option value="">Home Ownership:</option>
                     <option value="Yes">Yes</option>
                     <option value="No">No</option>
-                  </select></p>
+                  </select>
+                </div>
+              </div>
                 <!-- Exp Month
                 <select id="month">
                   <option value="1">January</option>
@@ -569,7 +586,7 @@
               </p> -->
             </div>
 
-            <div class="thanks-message text-center" id="text-message">
+            <div id="text-message">
               <img
                 src="https://i.imgur.com/O18mJ1K.png"
                 width="100"
@@ -607,6 +624,188 @@
   </body>
 </html>
 <script>
+  var currentStep = 0;
+  var stepTitles = [
+    "Step 1: Select Amount",
+    "Step 2: Personal Information",
+    "Step 3: Employment Information",
+    "Step 4: Additional Details"
+  ];
+
+  function updateStepTitle() {
+  var titleElement = document.getElementById("step-title");
+
+  if (titleElement) {
+    // Check if the titleElement is not null (i.e., it exists in the DOM)
+    if (currentStep >= 0 && currentStep < stepTitles.length) {
+      titleElement.textContent = stepTitles[currentStep];
+    }
+    else{
+      titleElement.textContent=""
+    }
+    
+  } 
+}
+//your javascript goes here
+var currentTab = 0,requestAmont=0, tab=0;
+var select = document.getElementById("requestAmont");
+var fname;
+
+  for (var i = 100; i <= 50000; i += 50) {
+    var option = document.createElement("option");
+    option.value = i;
+    option.text = i;
+    select.appendChild(option);
+  }
+  
+
+document.addEventListener("DOMContentLoaded", function (event) {
+  showTab(currentTab);
+
+});
+
+
+function showTab(n) {
+
+  var x = document.getElementsByClassName("tab");
+  x[n].style.display = "block";
+  if (n == 0) {
+    document.getElementById("prevBtn").style.display = "none";
+  } else {
+    document.getElementById("prevBtn").style.display = "inline";
+  }
+  if (n == x.length - 1) {
+    document.getElementById("nextBtn").innerHTML = "Submit";
+  } else {
+    document.getElementById("nextBtn").innerHTML = "Next";
+  }
+  fixStepIndicator(n);
+}
+
+function nextPrev(n) {
+  var x = document.getElementsByClassName("tab");
+  
+  if (n == 1 && !validateForm()) return false;
+  x[currentTab].style.display = "none";
+  currentTab = currentTab + n;
+  if (currentTab >= x.length) {
+    // alert(currentTab, "hi ", x.length)
+    // document.getElementById("regForm").submit();
+    // return false;
+    //alert("sdf");
+    document.getElementById("step-title").style.display="none";
+    document.getElementById("text-message").style.display = "block";
+    document.getElementById("nextprevious").style.display = "none";
+    document.getElementById("all-steps").style.display = "none";
+    document.getElementById("register").style.display = "none";
+    // document.getElementById("form-container").style.display = "none";
+    return; // Add this return statement to exit the function
+  }
+  // alert(currentTab + "hi2 "+  x.length)
+  currentStep += n;
+  updateStepTitle();
+  showTab(currentTab);
+}
+
+
+function validateForm() {
+  var fname, x, inputs, selects, i, valid = true;
+  fname = document.getElementById("FirstName").value;
+  x = document.getElementsByClassName("tab");
+  inputs = x[currentTab].getElementsByTagName("input");
+  selects = x[currentTab].getElementsByTagName("select");
+
+  // Validate input elements
+  for (i = 0; i < inputs.length; i++) {
+      if (inputs[i].value === "") {
+          inputs[i].classList.add("invalid");
+          valid = false;
+      } else {
+          inputs[i].classList.remove("invalid");
+      }
+  }
+
+  // // Validate select elements
+  for (i = 0; i < selects.length; i++) {
+      if (selects[i].value === "") {
+          selects[i].classList.add("invalid");
+          valid = false;
+      } else {
+          selects[i].classList.remove("invalid");
+      }
+  }
+
+  if (currentTab == 0 && selects[0].value === "select") {
+      selects[0].classList.add("invalid");
+      valid = false;
+  }
+//  else{
+//      valid=false;
+//      }
+  
+  // }
+   
+ 
+    
+    if(currentTab==1 &&  fname.length < 2 ){
+      fname.className +=" invalid";
+      // alert("less then 2 " +fname.length); 
+        
+    } 
+  if (valid) {
+    document.getElementsByClassName("step")[currentTab].className +=
+      " finish";
+  }
+  return valid;
+}
+
+function fixStepIndicator(n) {
+  var i,
+    x = document.getElementsByClassName("step");
+  for (i = 0; i < x.length; i++) {
+    x[i].className = x[i].className.replace(" active", "");
+  }
+  x[n].className += " active";
+}
+// function nextpaycheck(){
+//   let today = new Date();
+//             let day = today.getDate();
+//             let month = today.getMonth() + 1;
+//             let year = today.getFullYear();
+//             if (day < 10) {
+//                 day = "0" + day.toString();
+//             }
+//             if (month < 10) {
+//                 month = "0" + month.toString();
+//             }
+//             let NextPayDateMin = year + "-" + month + "-" + day;
+//             nextpay = document.getElementById("nextpaydate").value;
+//             // console.log(nextpay);
+//             let d = new Date(nextpay);
+//             // console.log(d);
+//             if(nextpay < NextPayDateMin){
+//                 document.getElementById("nextpaydate").value = null;
+//                 alert("Next Paydate Must be in the future");
+//             }
+//             else if(d.getDay() == 6 || d.getDay() == 0){
+//                     document.getElementById("nextpaydate").value = null;
+//                     alert("Next PayDate cannot be on the Weekend");
+//             }
+// }
+
+  function nextpaycheck1() {
+    // Step 1: Get the current date
+    const today = new Date();
+  
+    // Step 2: Get the input element for the next pay date
+    const nextPayDateInput = document.getElementById('nextpaydate');
+  
+    // Step 3: Set the min attribute of the input element to the current date
+    nextPayDateInput.setAttribute('min', today.toISOString().slice(0,10));
+  }
+  updateStepTitle();
+</script>
+<!-- <script>
     var currentStep = 0;
     var stepTitles = [
       "Step 1: Select Amount",
@@ -685,7 +884,7 @@
     inputs = x[currentTab].getElementsByTagName("input");
     selects = x[currentTab].getElementsByTagName("select");
 
-    // Validate input elements
+    Validate input elements
     for (i = 0; i < inputs.length; i++) {
         if (inputs[i].value === "") {
             inputs[i].classList.add("invalid");
@@ -719,7 +918,7 @@
       
       if(currentTab==1 &&  fname.length < 2 ){
         fname.className +=" invalid";
-        alert("less then 2 " +fname.length); 
+        // alert("less then 2 " +fname.length); 
           
       } 
       
@@ -778,4 +977,4 @@
       nextPayDateInput.setAttribute('min', today.toISOString().slice(0,10));
     }
     updateStepTitle();
-</script>
+</script> -->
