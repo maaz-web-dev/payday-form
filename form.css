@@ -255,7 +255,20 @@ body {
   button:hover {
     background-color: #45a049;
   }
-
+  .tooltip {
+    position: absolute;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    padding: 5px;
+    border-radius: 5px;
+    display: none;
+    z-index: 1;
+  }
+  
+  .tooltip.show {
+    display: block;
+  }
+  
   #text-message {
     display: none;
     text-align: center;
@@ -281,3 +294,16 @@ body {
     background-color: #ccc;
     margin: 20px 0;
 }
+.tooltip {
+    position: absolute;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    padding: 5px;
+    border-radius: 5px;
+    display: none;
+    z-index: 1;
+  }
+  
+  .tooltip.show {
+    display: block;
+  }

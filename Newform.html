@@ -66,6 +66,7 @@
                   placeholder="Email"
                   oninput="this.className = ''"
                   name="email"
+                  id="email"
                 />
               </p> 
               <div class="form-group row">
@@ -74,14 +75,17 @@
                     onfocus="this.placeholder=''" onblur="this.placeholder='Home Phone:0123456789*'" 
                     oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                     oninput="javascript: if (this.value.length > this.minLength) this.value = this.value.slice(0, this.minLength);"
-                    maxlength="10" minlength="10" data-field="phone_home" class="form-control" data-rule-required="true" required="required">
+                    maxlength="10" minlength="10" data-field="phone_home" class="form-control" data-rule-required="true"   title="Phone number should have at least 10 digits"
+                    data-placement="top" required="required">
                 </div>
                 <div class="col-md-6">
                   <input name="phone_cell" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" id="phone_cell" class="form-control" type="number" placeholder="Cell Phone:*" 
                     onfocus="this.placeholder=''" onblur="this.placeholder='Cell Phone:*'" 
                     oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                     oninput="javascript: if (this.value.length > this.minLength) this.value = this.value.slice(0, this.minLength);"
-                    maxlength="10" minlength="10" data-field="phone_home" class="form-control" data-rule-required="true" required="required">
+                    maxlength="10" minlength="10" data-field="phone_home" class="form-control" data-rule-required="true"  data-toggle="tooltip"
+                    title="Phone number should have at least 10 digits"
+                    data-placement="top" required="required">
                 </div>
               </div>
               
@@ -89,7 +93,9 @@
                   onfocus="this.placeholder=''" onblur="this.placeholder='Phone Work:*'" 
                   oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                   oninput="javascript: if (this.value.length > this.minLength) this.value = this.value.slice(0, this.minLength);"
-                  maxlength="10" minlength="10" data-field="PhoneWork" class="form-control" data-rule-required="true" required="required"></p>
+                  maxlength="10" minlength="10" data-field="PhoneWork" class="form-control" data-rule-required="true"  data-toggle="tooltip"
+                  title="Phone number should have at least 10 digits"
+                  data-placement="top" required="required"></p>
                   <div class="form-group row">
                     <div class="col-md-7">
                       <input type="text"
@@ -177,7 +183,14 @@
                       oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                       oninput="javascript: if (this.value.length > this.minLength) this.value = this.value.slice(0, this.minLength);"
                       maxlength="5" minlength="5" data-field="zip_code" class="form-control" data-rule-required="true"
-                      required="required"></p>
+                      data-toggle="tooltip" title="" data-placement="top" required="required"></p>
+                     
+                      <script>
+                        $(document).ready(function(){
+                          $('[data-toggle="tooltip"]').tooltip();
+                        });
+                      </script>
+                    
                 </div>
               
               </div>
@@ -711,6 +724,10 @@ function nextPrev(n) {
 function validateForm() {
   var fname, x, inputs, selects, i, valid = true;
   fname = document.getElementById("FirstName").value;
+  const phoneInput = document.getElementById("phone_cell");
+  const phoneCellValue = phoneInput.value;
+  const phoneHome = document.getElementById("phone_home");
+  const phoneHomeValue = phoneInput.value;
   x = document.getElementsByClassName("tab");
   inputs = x[currentTab].getElementsByTagName("input");
   selects = x[currentTab].getElementsByTagName("select");
@@ -719,16 +736,43 @@ function validateForm() {
   for (i = 0; i < inputs.length; i++) {
       if (inputs[i].value === "") {
           inputs[i].classList.add("invalid");
+          inputs[i].focus();
           valid = false;
       } else {
           inputs[i].classList.remove("invalid");
       }
+    // Check if the input is an email field and validate it
+      if (inputs[i].id === "email") {
+        const email = inputs[i].value;
+        const emailRegex = /^[A-Za-z0-9._%+-]+@gmail\.com$/;
+        if (!emailRegex.test(email)) {
+          inputs[i].classList.add("invalid");
+          valid = false;
+        }
+
+      }
   }
+  
+  if (currentTab === 1) {
+    if (phoneCellValue.length < 10 || phoneHomeValue.length < 10) {
+      alert("phoneCell.length: " + phoneCellValue.length);
+      phoneInput.classList.add("invalid");
+      phoneHome.classList.add("invalid");
+      valid = false;
+      
+      if (phoneCellValue.length < 10) {
+        phoneInput.focus();
+      } else {
+        phoneHome.focus();
+      }
+  }
+}
 
   // // Validate select elements
   for (i = 0; i < selects.length; i++) {
       if (selects[i].value === "") {
           selects[i].classList.add("invalid");
+          selects[i].focus();
           valid = false;
       } else {
           selects[i].classList.remove("invalid");
@@ -737,6 +781,7 @@ function validateForm() {
 
   if (currentTab == 0 && selects[0].value === "select") {
       selects[0].classList.add("invalid");
+      selects[i].focus();
       valid = false;
   }
 //  else{
@@ -745,7 +790,6 @@ function validateForm() {
   
   // }
    
- 
     
     if(currentTab==1 &&  fname.length < 2 ){
       fname.className +=" invalid";
@@ -805,176 +849,5 @@ function fixStepIndicator(n) {
   }
   updateStepTitle();
 </script>
-<!-- <script>
-    var currentStep = 0;
-    var stepTitles = [
-      "Step 1: Select Amount",
-      "Step 2: Personal Information",
-      "Step 3: Employment Information",
-      "Step 4: Additional Details"
-    ];
 
-    function updateStepTitle() {
-      var titleElement = document.getElementById("step-title");
-      if (currentStep >= 0 && currentStep < stepTitles.length) {
-        titleElement.textContent = stepTitles[currentStep];
-      }
-    }
-  //your javascript goes here
-  var currentTab = 0,requestAmont=0, tab=0;
-  var select = document.getElementById("requestAmont");
-  var fname;
-
-    for (var i = 100; i <= 50000; i += 50) {
-      var option = document.createElement("option");
-      option.value = i;
-      option.text = i;
-      select.appendChild(option);
-    }
     
- 
-  document.addEventListener("DOMContentLoaded", function (event) {
-    showTab(currentTab);
-
-  });
-  
-
-  function showTab(n) {
-
-    var x = document.getElementsByClassName("tab");
-    x[n].style.display = "block";
-    if (n == 0) {
-      document.getElementById("prevBtn").style.display = "none";
-    } else {
-      document.getElementById("prevBtn").style.display = "inline";
-    }
-    if (n == x.length - 1) {
-      document.getElementById("nextBtn").innerHTML = "Submit";
-    } else {
-      document.getElementById("nextBtn").innerHTML = "Next";
-    }
-    fixStepIndicator(n);
-  }
-
-  function nextPrev(n) {
-    
-    var x = document.getElementsByClassName("tab");
-    if (n == 1 && !validateForm()) return false;
-    x[currentTab].style.display = "none";
-    currentTab = currentTab + n;
-    if (currentTab >= x.length) {
-      // document.getElementById("regForm").submit();
-      // return false;
-      //alert("sdf");
-      document.getElementById("nextprevious").style.display = "none";
-      document.getElementById("all-steps").style.display = "none";
-      document.getElementById("register").style.display = "none";
-      document.getElementById("text-message").style.display = "block";
-    }
-    currentStep += n;
-      updateStepTitle();
-    showTab(currentTab);
-  }
-  
-
-  function validateForm() {
-    var fname, x, inputs, selects, i, valid = true;
-    fname = document.getElementById("FirstName").value;
-    x = document.getElementsByClassName("tab");
-    inputs = x[currentTab].getElementsByTagName("input");
-    selects = x[currentTab].getElementsByTagName("select");
-
-    Validate input elements
-    for (i = 0; i < inputs.length; i++) {
-        if (inputs[i].value === "") {
-            inputs[i].classList.add("invalid");
-            valid = false;
-        } else {
-            inputs[i].classList.remove("invalid");
-        }
-    }
-
-    // Validate select elements
-    for (i = 0; i < selects.length; i++) {
-        if (selects[i].value === "") {
-            selects[i].classList.add("invalid");
-            valid = false;
-        } else {
-            selects[i].classList.remove("invalid");
-        }
-    }
-
-    if (currentTab == 0 && selects[0].value === "select") {
-        selects[0].classList.add("invalid");
-        valid = false;
-    }
-  //  else{
-  //      valid=false;
-  //      }
-    
-    // }
-     
-   
-      
-      if(currentTab==1 &&  fname.length < 2 ){
-        fname.className +=" invalid";
-        // alert("less then 2 " +fname.length); 
-          
-      } 
-      
-     
-
-
-    if (valid) {
-      document.getElementsByClassName("step")[currentTab].className +=
-        " finish";
-    }
-    return valid;
-  }
-
-  function fixStepIndicator(n) {
-    var i,
-      x = document.getElementsByClassName("step");
-    for (i = 0; i < x.length; i++) {
-      x[i].className = x[i].className.replace(" active", "");
-    }
-    x[n].className += " active";
-  }
-  // function nextpaycheck(){
-  //   let today = new Date();
-  //             let day = today.getDate();
-  //             let month = today.getMonth() + 1;
-  //             let year = today.getFullYear();
-  //             if (day < 10) {
-  //                 day = "0" + day.toString();
-  //             }
-  //             if (month < 10) {
-  //                 month = "0" + month.toString();
-  //             }
-  //             let NextPayDateMin = year + "-" + month + "-" + day;
-  //             nextpay = document.getElementById("nextpaydate").value;
-  //             // console.log(nextpay);
-  //             let d = new Date(nextpay);
-  //             // console.log(d);
-  //             if(nextpay < NextPayDateMin){
-  //                 document.getElementById("nextpaydate").value = null;
-  //                 alert("Next Paydate Must be in the future");
-  //             }
-  //             else if(d.getDay() == 6 || d.getDay() == 0){
-  //                     document.getElementById("nextpaydate").value = null;
-  //                     alert("Next PayDate cannot be on the Weekend");
-  //             }
-  // }
-  
-    function nextpaycheck1() {
-      // Step 1: Get the current date
-      const today = new Date();
-    
-      // Step 2: Get the input element for the next pay date
-      const nextPayDateInput = document.getElementById('nextpaydate');
-    
-      // Step 3: Set the min attribute of the input element to the current date
-      nextPayDateInput.setAttribute('min', today.toISOString().slice(0,10));
-    }
-    updateStepTitle();
-</script> -->
