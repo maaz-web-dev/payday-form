@@ -89,7 +89,7 @@
                 </div>
               </div>
               
-                <p> <input name="PhoneWork" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" id="phone_cell" class="form-control" type="number" placeholder="work phone*'" 
+                <p> <input name="PhoneWork" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" id="phone_cell" class="form-control" type="number" placeholder="work phone'" 
                   onfocus="this.placeholder=''" onblur="this.placeholder='Phone Work:*'" 
                   oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                   oninput="javascript: if (this.value.length > this.minLength) this.value = this.value.slice(0, this.minLength);"
@@ -620,16 +620,17 @@
                   }
               }
           </script>
-            <div style="overflow: auto" id="nextprevious">
-              <div style="float: right">
-                <button type="button" id="prevBtn" onclick="nextPrev(-1)">
-                  Previous
-                </button>
-                <button type="button" id="nextBtn" onclick="nextPrev(1)">
-                  Next
-                </button>
-              </div>
-            </div>
+            <div style="overflow: auto; white-space: nowrap;" id="nextprevious">
+<div style="overflow: auto; white-space: nowrap; min-width: 160px;" id="nextprevious">
+  <div style="float: right">
+    <button type="button" id="nextBtn" onclick="nextPrev(1)">
+      Next
+    </button>
+    <button type="button" id="prevBtn" onclick="nextPrev(-1)">
+      Previous
+    </button>
+  </div>
+</div>
           </form>
         </div>
       </div>
@@ -714,7 +715,7 @@ function nextPrev(n) {
     // document.getElementById("form-container").style.display = "none";
     return; // Add this return statement to exit the function
   }
-  // alert(currentTab + "hi2 "+  x.length)
+
   currentStep += n;
   updateStepTitle();
   showTab(currentTab);
@@ -755,16 +756,17 @@ function validateForm() {
   
   if (currentTab === 1) {
     if (phoneCellValue.length < 10 || phoneHomeValue.length < 10) {
-      alert("phoneCell.length: " + phoneCellValue.length);
+    
       phoneInput.classList.add("invalid");
-      phoneHome.classList.add("invalid");
+      // phoneHome.classList.add("invalid");
       valid = false;
       
       if (phoneCellValue.length < 10) {
         phoneInput.focus();
-      } else {
-        phoneHome.focus();
       }
+      //  else {
+      //   phoneHome.focus();
+      // }
   }
 }
 
@@ -793,7 +795,7 @@ function validateForm() {
     
     if(currentTab==1 &&  fname.length < 2 ){
       fname.className +=" invalid";
-      // alert("less then 2 " +fname.length); 
+     
         
     } 
   if (valid) {
