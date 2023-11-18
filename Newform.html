@@ -745,7 +745,8 @@ function validateForm() {
     // Check if the input is an email field and validate it
       if (inputs[i].id === "email") {
         const email = inputs[i].value;
-        const emailRegex = /^[A-Za-z0-9._%+-]+@gmail\.com$/;
+        // const emailRegex = /^[A-Za-z0-9._%+-]+@gmail\.com$/;
+        const emailRegex = /^[A-Za-z0-9._%+-]+@/;
         if (!emailRegex.test(email)) {
           inputs[i].classList.add("invalid");
           valid = false;
