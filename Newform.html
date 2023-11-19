@@ -89,13 +89,12 @@
                 </div>
               </div>
               
-                <p> <input name="PhoneWork" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" id="phone_cell" class="form-control" type="number" placeholder="work phone'" 
-                  onfocus="this.placeholder=''" onblur="this.placeholder='Phone Work:*'" 
+                <p> <input name="PhoneWork" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" id="phone_cell_work" class="form-control" type="number" placeholder="work phone'" 
+                  onfocus="this.placeholder=''" onblur="this.placeholder='Phone Work:'" 
                   oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                   oninput="javascript: if (this.value.length > this.minLength) this.value = this.value.slice(0, this.minLength);"
-                  maxlength="10" minlength="10" data-field="PhoneWork" class="form-control" data-rule-required="true"  data-toggle="tooltip"
-                  title="Phone number should have at least 10 digits"
-                  data-placement="top" required="required"></p>
+                  maxlength="10" minlength="10" data-field="PhoneWork" class="form-control" data-rule-required="true"  
+                 ></p>
                   <div class="form-group row">
                     <div class="col-md-7">
                       <input type="text"
@@ -726,6 +725,8 @@ function validateForm() {
   var fname, x, inputs, selects, i, valid = true;
   fname = document.getElementById("FirstName").value;
   const phoneInput = document.getElementById("phone_cell");
+  const phoneCellWork = document.getElementById("phone_cell_work");
+  
   const phoneCellValue = phoneInput.value;
   const phoneHome = document.getElementById("phone_home");
   const phoneHomeValue = phoneInput.value;
@@ -735,11 +736,15 @@ function validateForm() {
 
   // Validate input elements
   for (i = 0; i < inputs.length; i++) {
-      if (inputs[i].value === "") {
+      if (inputs[i] !== phoneCellWork && inputs[i].value === "") {
           inputs[i].classList.add("invalid");
           inputs[i].focus();
           valid = false;
-      } else {
+      } else if(inputs[i].id==="phone_cell_work"){
+            valid=true;
+            inputs[i].classList.remove("invalid");
+      }
+      else {
           inputs[i].classList.remove("invalid");
       }
     // Check if the input is an email field and validate it
@@ -756,15 +761,17 @@ function validateForm() {
   }
   
   if (currentTab === 1) {
-    if (phoneCellValue.length < 10 || phoneHomeValue.length < 10) {
+    if (phoneCellValue.length < 10) {
     
       phoneInput.classList.add("invalid");
       // phoneHome.classList.add("invalid");
-      valid = false;
       
-      if (phoneCellValue.length < 10) {
-        phoneInput.focus();
-      }
+      valid = false;
+      phoneInput.focus();
+      
+      // if (phoneCellValue.length < 10) {
+      //   phoneInput.focus();
+      // }
       //  else {
       //   phoneHome.focus();
       // }
